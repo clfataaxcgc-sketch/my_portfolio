@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans text-ink-900 dark:text-paper-50;
+}
+
+::selection {
+  @apply bg-signal/30;
+}
+
+.font-display {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.bg-dots {
+  background-image: radial-gradient(
+    rgba(124, 92, 255, 0.18) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+.card-surface {
+  @apply bg-white dark:bg-ink-800 border border-ink-500/20 dark:border-white/5 rounded-2xl shadow-card;
+}
+
+.skeleton {
+  @apply relative overflow-hidden bg-ink-500 dark:bg-ink-700 rounded-xl;
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 text-sm font-medium text-white transition hover:bg-signal-dim active:scale-[0.98];
+}
+.btn-secondary {
+  @apply inline-flex items-center gap-2 rounded-full border border-ink-900/15 dark:border-white/15 px-5 py-2.5 text-sm font-medium text-ink-900 dark:text-paper-50 transition hover:border-signal hover:text-signal;
+}
+.badge {
+  @apply inline-flex items-center rounded-full bg-ink-900/5 dark:bg-white/5 px-2.5 py-1 text-xs font-mono text-ink-600 dark:text-paper-100/70;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
